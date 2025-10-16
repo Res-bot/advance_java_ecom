@@ -1,19 +1,38 @@
+<<<<<<< HEAD
+=======
+// SignupServlet Class
+>>>>>>> b78248c (created a page for individual product)
 package controller.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+<<<<<<< HEAD
+=======
+import util.ProductStringUtils;
+import util.StringUtils;
+>>>>>>> b78248c (created a page for individual product)
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 
 import controller.DatabaseController;
 import model.CartModel;
 import util.StringUtils;
+=======
+import javax.servlet.http.Part;
+
+import controller.DatabaseController;
+import model.CartModel;
+import model.UsersModel;
+
+
+>>>>>>> b78248c (created a page for individual product)
 
 @WebServlet(asyncSupported = true, urlPatterns = {StringUtils.CART_SERVLET})
 

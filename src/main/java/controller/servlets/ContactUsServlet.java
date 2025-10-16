@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package controller.servlets;
 
 import java.io.IOException;
@@ -8,6 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+=======
+// SignupServlet Class
+package controller.servlets;
+
+import java.io.IOException;
+>>>>>>> b78248c (created a page for individual product)
 import java.io.PrintWriter;
 
 import util.StringUtils;

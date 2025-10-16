@@ -109,6 +109,11 @@ public class StringUtils {
 	public static final String PRODUCTS_SERVLET="/ProductsServlet";
 	public static final String All_CONTACTS = "/AllContacts";
 
+<<<<<<< HEAD
 	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
 	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
+=======
+//	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
+//	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
+>>>>>>> b78248c (created a page for individual product)
 }

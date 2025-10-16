@@ -71,9 +71,19 @@ public class CartModel {
 	public void setName(String name) {
 		this.name = name;
 	}
+<<<<<<< HEAD
 }
+=======
+>>>>>>> b78248c (created a page for individual product)
 	
 	
 
     
+<<<<<<< HEAD
     
+=======
+    
+    
+    
+}
+>>>>>>> b78248c (created a page for individual product)

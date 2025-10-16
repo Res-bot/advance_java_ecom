@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+// SignupServlet Class
+>>>>>>> b78248c (created a page for individual product)
 package controller.servlets;
 
 import java.io.IOException;
@@ -12,12 +16,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
 
 
 import controller.DatabaseController;
 
 import model.OrderModel;
 
+=======
+import javax.servlet.http.Part;
+
+import controller.DatabaseController;
+import model.CartModel;
+import model.OrderModel;
+import model.UsersModel;
+>>>>>>> b78248c (created a page for individual product)
 
 
 
@@ -78,4 +91,7 @@ public class AdminOrder extends HttpServlet {
     }
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> b78248c (created a page for individual product)

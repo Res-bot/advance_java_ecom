@@ -1,6 +1,7 @@
 package controller.servlets;
 
 import java.io.IOException;
+<<<<<<< HEAD
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+=======
+>>>>>>> b78248c (created a page for individual product)
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

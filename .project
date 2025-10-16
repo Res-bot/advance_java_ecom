@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>WatchIt</name>
+=======
+	<name>TikTik-ecom</name>
+>>>>>>> b78248c (created a page for individual product)
 	<comment></comment>
 	<projects>
 	</projects>
@@ -30,7 +34,11 @@
 	</natures>
 	<filteredResources>
 		<filter>
+<<<<<<< HEAD
 			<id>1760145887372</id>
+=======
+			<id>1760627699867</id>
+>>>>>>> b78248c (created a page for individual product)
 			<name></name>
 			<type>30</type>
 			<matcher>
