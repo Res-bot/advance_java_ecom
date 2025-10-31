@@ -6,8 +6,8 @@ public class StringUtils {
 	
 	//Queries
 	public static final String SIGNUP ="INSERT INTO users "
-			+"(userName,email,location,phone,password,profile_Img)"
-			+"VALUES(?,?,?,?,?,?)";
+			+"(userName,email,location,phone,password,profile_Img,is_Admin)"
+			+"VALUES(?,?,?,?,?,?,?)";
 	public static final String GET_LOGIN_INFO = "SELECT * FROM users WHERE email = ?";
 	public static final String GET_USERNAME = "SELECT * FROM users WHERE userName=?";
 	public static final String GET_PHONE = "SELECT * FROM users WHERE phone=?";
@@ -44,7 +44,7 @@ public class StringUtils {
 
 	public static final String QUANTITY = "quantity";
 	public static final String PROD_ID = "prod_id";
-	public static final String USER_ID = "user_id";
+	public static final String USER_ID = "id";
 	public static final String CART_DISPLAY = "SELECT c.*, p.prod_name, p.prod_price,p.profile_Img " +
             "FROM carts c " +
             "JOIN products p ON c.prod_id = p.prod_id " +
@@ -59,7 +59,7 @@ public class StringUtils {
 	        + "FROM carts "
 	        + "JOIN products ON carts.prod_id = products.prod_id "
 	        + "JOIN orders ON carts.cart_id = orders.cart_id "
-	        + "JOIN users ON carts.user_id = users.user_id";
+	        + "JOIN users ON carts.user_id = users.id";
 
 
 //aboutus
@@ -109,6 +109,6 @@ public class StringUtils {
 	public static final String PRODUCTS_SERVLET="/ProductsServlet";
 	public static final String All_CONTACTS = "/AllContacts";
 
-	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
-	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
+//	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
+//	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
 }

@@ -1,12 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
-</html>
+	<header class="header">
+		<header class="header">
+			<h1 class="logo">
+				<a href="">
+					<img src="${pageContext.request.contextPath}/resources/images/logo.png" />
+				</a>
+			</h1>
+			<ul class="main-nav">
+				<li>
+				<li>
+					<form action="${pageContext.request.contextPath}/LogoutServlet" method="post">
+						<button type="submit" class="btn btn-danger">
+							Logout
+						</button>
+					</form>
+				</li>
+			</ul>
+		</header>
+	</div>

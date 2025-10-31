@@ -8,24 +8,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controller.DatabaseController;
+import model.ProductsModel;
+import util.ProductStringUtils;
 
-import model.AboutUsModel;
-import util.StringUtils;
 
-@WebServlet(asyncSupported = true, urlPatterns = StringUtils.All_CONTACTS)
-public class AllContacts extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = ProductStringUtils.PRODUCTS_SERVLET)
+public class ProductsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private DatabaseController dbController = new DatabaseController();
 
-    public AllContacts() {
+    public ProductsServlet() {
         super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Fetching all contacts");
-        List<AboutUsModel> contacts = dbController.getAllContacts();
-        request.setAttribute("contacts", contacts);
-        request.getRequestDispatcher("pages/allContacts.jsp").forward(request, response);
+        // Fetch all student details from the database
+        List<ProductsModel> products = dbController.getAllProducts();
+
+        // Set the list of students as an attribute in the request object
+        request.setAttribute("products", products);
+
+        // Forward the request to the students.jsp page
+        request.getRequestDispatcher("pages/allProducts.jsp").forward(request, response);
     }
 }

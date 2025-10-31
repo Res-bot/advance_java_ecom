@@ -42,7 +42,6 @@ public class ProductStringUtils {
 	public static final String PRODUCT_ERROR_MESSAGE = "Product already added";
 
 	
-	
 	//jsp routes
 	public static final String SIGNUP_PAGE = "/pages/signup.jsp";
 	public static final String LOGIN_PAGE = "/pages/login.jsp";
@@ -57,7 +56,7 @@ public class ProductStringUtils {
 	public static final String USER_PRODUCT_SERVLET = "/UserProductServlet";
 
 
-	public static final String IMG_DIR = "Users\\tiger\\eclipse-test\\Tik_Tik\\src\\main\\webapp\\images\\";
-	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
+//	public static final String IMG_DIR = "C:\\Users\\Reshma\\eclipse-workspace\\Tik_Tik-Watch-ecommerce\\src\\main\\webapp\\images\"";
+//	public static final String IMG_DIR_SAVE_PATH = "C:"+File.separator+IMG_DIR;
 
 }

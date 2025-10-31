@@ -1,3 +1,4 @@
+// SignupServlet Class
 package controller.servlets;
 
 import java.io.IOException;
@@ -12,12 +13,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.Part;
 
 import controller.DatabaseController;
-
+import model.CartModel;
 import model.OrderModel;
-
+import model.UsersModel;
 
 
 
@@ -37,20 +38,15 @@ public class AdminOrder extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = (String) request.getSession().getAttribute("email");
-    	
-    	 String userid=dbController.getUserIdByEmail(email);
-    	 System.out.println("users ko :"+userid);
-               // Fetch users from the database based on the email
-               List<OrderModel> order = dbController.displayAdminOrder();
-               System.out.println(order);
-               // Set the users as an attribute in the request object
-               request.setAttribute("AdminOrder", order);
-
-               // Forward the request to the singleRegisterUser.jsp page
-               request.getRequestDispatcher("pages/adminOrder.jsp").forward(request, response);
-
-              
-           } 
+        String userid = dbController.getUserIdByEmail(email);
+        System.out.println("Admin viewing orders - User ID: " + userid);
+        
+        List<OrderModel> order = dbController.displayAdminOrder();
+        System.out.println("Orders retrieved: " + order);
+        
+        request.setAttribute("AdminOrder", order);
+        request.getRequestDispatcher("pages/adminOrder.jsp").forward(request, response);
+    }
     
           
     
@@ -77,5 +73,4 @@ public class AdminOrder extends HttpServlet {
 
     }
 }
-
 

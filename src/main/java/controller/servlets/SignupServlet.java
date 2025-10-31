@@ -3,7 +3,7 @@ package controller.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import javax.servlet.http.Part;
 import util.StringUtils;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -14,22 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import controller.DatabaseController;
-import model.AboutUsModel;
 import model.UsersModel;
 
 
 
-@WebServlet(asyncSupported = true, urlPatterns = {StringUtils.CONTACTUS_SERVLET})
+@WebServlet(asyncSupported = true, urlPatterns = {StringUtils.SIGNUP_SERVLET})
 
 @MultipartConfig(fileSizeThreshold=1024*1024*10, 	// 10 MB 
 maxFileSize=1024*1024*50,      	// 50 MB
 maxRequestSize=1024*1024*100)
 
-public class ContactUsServlet extends HttpServlet {
+
+public class SignupServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     DatabaseController dbController = new DatabaseController();
 
-    public ContactUsServlet() {
+    public SignupServlet() {
         super();
     }
 
@@ -43,20 +43,46 @@ public class ContactUsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter printOut = response.getWriter();
 
-        String userEmail = request.getParameter("user_email");
-        String userPhone = request.getParameter("user_phone");
-        String message = request.getParameter("message");
+        String userName = request.getParameter(StringUtils.USERNAME);
+        String email = request.getParameter(StringUtils.EMAIL);
+        String location = request.getParameter(StringUtils.LOCATION);
+        String phone = request.getParameter(StringUtils.PHONE);
+        String password = request.getParameter(StringUtils.PASSWORD);
+        String isAdmin = request.getParameter(StringUtils.IS_ADMIN);
+        String retypePassword = request.getParameter(StringUtils.RETYPE_PASSWORD);
+        Part imagePart = request.getPart("image");
 
-
-       
-            AboutUsModel contactUsModel = new AboutUsModel( userEmail,  userPhone,  message);
-           
-            int result = dbController.addContactUs(contactUsModel);
+        if (password.equals(retypePassword)) {
+            UsersModel userModel = new UsersModel(userName, email, location, phone, password, isAdmin,imagePart);
+         // Define the web-relative path for the images folder
+            String relativeWebPath = "/images"; 
+            
+            // Get the dynamic absolute path on your hard drive where the web app is running
+            // This is the correct replacement for StringUtils.IMG_DIR_SAVE_PATH
+            String savePath = request.getServletContext().getRealPath(relativeWebPath);
+            
+            // Note: getRealPath() might or might not include a trailing File.separator, 
+            // so it's safest to construct the final file path using the File API.
+            
+            String fileName = userModel.getImageUrlFromPart();
+            
+            if(!fileName.isEmpty() && fileName != null) {
+                // Create the directory if it doesn't exist
+                java.io.File fileSaveDir = new java.io.File(savePath);
+                if (!fileSaveDir.exists()) {
+                    fileSaveDir.mkdirs(); // Creates the directory structure
+                }
+                
+                // Construct the full path and write the file
+                java.io.File targetFile = new java.io.File(fileSaveDir, fileName);
+                imagePart.write(targetFile.getAbsolutePath());
+            }
+            int result = dbController.addUser(userModel);
 
             switch (result) {
                 case 1:
-                    request.setAttribute(StringUtils.SUCCESS_MESSAGE, StringUtils.SUCCESSFUL_CONTACT_MESSAGE);
-                    response.sendRedirect(request.getContextPath() + "/pages/aboutUs.jsp");
+                    request.setAttribute(StringUtils.SUCCESS_MESSAGE, StringUtils.SUCCESSFUL_SIGNUP_MESSAGE);
+                    response.sendRedirect(request.getContextPath() + StringUtils.LOGIN_PAGE);
                     break;
                 case 0:
                     request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.ERROR_SIGNUP_MESSAGE);
@@ -83,6 +109,10 @@ public class ContactUsServlet extends HttpServlet {
                     request.getRequestDispatcher(StringUtils.SIGNUP_PAGE).forward(request, response);
                     break;
             }
-        } 
+        } else {
+            request.setAttribute(StringUtils.ERROR_MESSAGE, StringUtils.PASSWORD_UNMATCHED_ERROR_MESSAGE);
+            request.getRequestDispatcher(StringUtils.SIGNUP_PAGE).forward(request, response);
+        }
 
     } 
+}
